@@ -24,4 +24,14 @@ public class CalculadoraTest {
 
         assertEquals(9, valorActual, 0.000001);
     }
+
+    @Test
+    public void testRestar() {
+        Calculadora cut = new Calculadora();
+
+        cut.restar(3);
+
+        double valorActual = cut.getTotal();
+        assertEquals(-3.0, valorActual, 0.000001);
+    }
 }
