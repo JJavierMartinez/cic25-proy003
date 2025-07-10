@@ -1,6 +1,7 @@
 package es.cic.curso25;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -37,6 +38,23 @@ public class CocheIntegrationTest {
         double consumoActual = cut.getConsumo();
         
         assertEquals(2.15, consumoActual);
+    }
+
+    @Test
+    public void testAceleracionNegativa(){
+        assertThrows(ExceptionInInitializerError.class,
+        () -> cut.frenar(10));
+        
+    }
+
+    @Test
+    public void testAceleracionEscesiva(){
+        cut.acelerar(150);
+        cut.acelerar(100);
+        
+        
+        assertThrows(ExceptionInInitializerError.class,
+        () -> cut.acelerar(100));
     }
 
 }

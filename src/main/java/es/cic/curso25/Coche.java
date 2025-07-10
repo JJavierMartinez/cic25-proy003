@@ -29,6 +29,10 @@ public class Coche {
         this.calculadora.sumar(this.velocidad);
         this.calculadora.sumar(incrementoDeVelocidad);
         this.velocidad = (int) Math.round(calculadora.getTotal());
+
+        if(this.velocidad > 300){
+            throw new ExceptionInInitializerError("No se puede ir tan rápido");
+        }
         return this.velocidad;
     }
 
@@ -37,6 +41,9 @@ public class Coche {
         this.calculadora.sumar(this.velocidad);
         this.calculadora.restar(decrementoDeVelocidad);
         this.velocidad = (int) Math.round(calculadora.getTotal());
+        if(this.velocidad<0){
+            throw new ExceptionInInitializerError("No se puede tener velocidad negativa");
+        }
         return this.velocidad;
     }
 }
